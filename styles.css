@@ -1,0 +1,351 @@
+/* pro ucely prezentace jsme odstranili watermark knihovny */
+.fp-watermark {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* box sizing border-box pro snazsi stylovani */
+* {
+  box-sizing: border-box;
+}
+
+/* abychom mohli navigaci umistit absolutne */
+body {
+  position: relative;
+}
+
+/* drobna uprava stylu, ktere jsou v ramci knihovnu fullpage.js */
+.fp-table {
+  justify-content: flex-start;
+}
+
+/* styly pro navigaci */
+nav {
+  position: fixed;
+  min-width: 1400px;
+  top: 0;
+  height: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+nav > ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 20px;
+}
+
+nav > ul > li > a {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 100%;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+nav > ul > li > a.active {
+  font-weight: 700;
+}
+
+/* stylování odkazů */
+a {
+  transition: color 0.15s ease;
+}
+
+a:link {
+  color: #27611a;
+}
+
+a:visited {
+  color: #27611a;
+}
+a:hover {
+  color: #96bb1e;
+}
+
+/* About */
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.about-img-container {
+  display: flex;
+  flex-wrap: wrap; /* Pro zalomení na další řádek, pokud je více než 4 obrázky */
+  gap: 15px; /* Mezera mezi obrázky */
+  justify-content: center;
+}
+
+.about-img-container a {
+  flex: 1 0 15%;
+  max-width: 15%;
+  height: auto;
+}
+.about-img-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: scale 0.15s ease;
+}
+
+.about-img-container img:hover {
+  scale: 1.05;
+  transition: scale 0.15s ease;
+}
+
+.article-title-about {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 64px;
+  text-align: center;
+  color: #27611a;
+  line-height: 100%;
+  margin: 0px;
+}
+
+.rok {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  color: #27611a;
+  text-align: center;
+  line-height: 100%;
+  margin: 20px 0px 0px 0px;
+}
+
+.text-about {
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  text-align: center;
+  line-height: 22px;
+  margin: 0px;
+}
+
+/* stylovani elementu article, ktery obsahuje main layout */
+article {
+  width: 100%;
+  position: relative;
+}
+
+/* fixni sirka pro obsah */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+/* odsazeni clanku kvuli fixni navigaci */
+.article-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  gap: 20px;
+}
+
+/* leva varianta contentu */
+.article-content--left {
+  grid-column: 1;
+}
+
+/* prava varianta contentu */
+.article-content--right {
+  grid-column: 2;
+  padding-left: 10px;
+}
+
+/* styly pro velky fixni obrazek v leve nebo prave casti obrazovky */
+.image-wrapper {
+  bottom: 0;
+  position: absolute;
+  width: calc(50vw - 20px);
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* leva variace obrazku */
+.image-wrapper--left {
+  left: 0;
+}
+
+/* prava variace obrazku */
+.image-wrapper--right {
+  right: 0;
+}
+
+.image-wrapper__inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-wrapper > .image-wrapper__inner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.image-wrapper__inner::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 70px;
+  background-image: url("img/scroll-animation.gif");
+  background-size: contain;
+
+  z-index: 2;
+}
+
+/* styly pro clanek samotny */
+
+.article-title {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 64px;
+  color: #27611a;
+  line-height: 115%;
+  margin: 0px;
+}
+
+.date-published {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  color: #96bb1e;
+  line-height: 100%;
+  margin: 0px;
+}
+
+.perex {
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0px;
+}
+
+.article-main-image {
+  width: 100%;
+  height: auto;
+}
+
+.article-main-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.article-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.article-columns > div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.article-columns p {
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0px;
+}
+
+.article-columns img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.article-footer {
+  margin: 20px 0px;
+  padding: 20px 20px;
+  background-color: #fff9e5;
+  /* border-top: 1px solid black;
+  border-bottom: 1px solid black; */
+}
+
+.article-footer > h3 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  color: #27611a;
+  line-height: 100%;
+  margin: 0px 0px 10px 0px;
+}
+
+.article-footer > ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.article-footer > ul > li {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+  padding-left: 40px;
+  font-size: 20px;
+  line-height: 35px;
+}
+
+/* jedna z metod, jak nahradit klasicky list-style napr. vlastnim obrazkem */
+.article-footer > ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  width: 29px;
+  height: 29px;
+  background: url("./img/ikona.svg") no-repeat center;
+  background-size: contain;
+}
+
+.article-footer > ul > li > span {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
