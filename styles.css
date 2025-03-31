@@ -1,0 +1,500 @@
+:root {
+  --mezera: 20px;
+}
+
+/* pro ucely prezentace jsme odstranili watermark knihovny */
+.fp-watermark {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* kontrastní prvky na fp */
+/* #fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background: red;
+} */
+
+/* box sizing border-box pro snazsi stylovani */
+* {
+  box-sizing: border-box;
+}
+
+/* abychom mohli navigaci umistit absolutne */
+body {
+  position: relative;
+}
+
+/* drobna uprava stylu, ktere jsou v ramci knihovnu fullpage.js */
+.fp-table {
+  justify-content: flex-start;
+}
+
+/* styly pro navigaci */
+nav {
+  position: fixed;
+  /* min-width: 1400px; */
+  top: 0;
+  height: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  /* trochu menší nadpis, ať tolik neruší ostatní prvky */
+  height: 60px;
+
+  /* glass effect */
+  /* vygenerováno na https://css.glass a https://www.joshwcomeau.com/css/designing-shadows/ */
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+nav > ul {
+  /* reset */
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 20px;
+}
+
+nav > ul > li > a {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 100%;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+nav > ul > li > a.active {
+  font-weight: 700;
+  /* bug daného písma */
+  font-size: 24.5px;
+}
+
+/* stylování odkazů */
+a {
+  transition: color 0.15s ease;
+}
+
+a:link {
+  color: #27611a;
+}
+
+a:visited {
+  color: #27611a;
+}
+a:hover {
+  color: #96bb1e;
+}
+
+/* About */
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.about-img-container-wrap {
+  /* aby to centerovalo i prvky které jsou pomyslně prázdné (grid počítá se 4 prvky na row)*/
+  display: grid;
+  place-items: center;
+
+  margin-bottom: calc(3 * var(--mezera));
+}
+
+.about-img-container {
+  display: flex;
+  flex-wrap: wrap; /* Pro zalomení na další řádek, pokud je více než 4 obrázky */
+  gap: 15px; /* Mezera mezi obrázky */
+  justify-content: center;
+
+  /* lepší omezit na množství obrázků, těch 6 už je kognitivně náročných */
+  gap: var(--mezera);
+  display: grid;
+  grid-template-columns: repeat(4, min-content);
+  justify-content: start;
+}
+
+.about-img-container a {
+  /* zakomentováno, aby fungoval grid */
+  /* flex: 1 0 15%;
+  max-width: 15%; */
+  height: auto;
+
+  /* drobný opravy pro některý prohlížeče */
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-width: 210px;
+}
+
+/* aby v případě, že budou dva, začínal od druhého sloupce */
+.about-img-container:has(a:nth-child(2):last-child) a:first-child {
+  grid-column: 2;
+}
+
+.about-img-container img {
+  max-width: 100%;
+  height: auto;
+  height: max-content;
+  border-radius: 10px;
+  transition: scale 0.15s ease;
+}
+
+.about-img-container img:hover {
+  scale: 1.05;
+  transition: scale 0.15s ease;
+}
+
+.article-title-about {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 64px;
+  text-align: center;
+  color: #27611a;
+  line-height: 100%;
+  margin: 0px;
+}
+
+.hero-about-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: calc(3 * var(--mezera));
+  gap: var(--mezera);
+}
+
+.rok {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  color: #27611a;
+  text-align: center;
+  line-height: 100%;
+  margin: 20px 0px 0px 0px;
+}
+
+.text-about {
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  text-align: center;
+  line-height: 22px;
+  margin: 0px;
+
+  /* maximální šířka a centrování */
+  max-width: 80ex;
+  margin: 0 auto;
+}
+
+/* stylovani elementu article, ktery obsahuje main layout */
+article {
+  width: 100%;
+  position: relative;
+}
+
+/* fixni sirka pro obsah */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  /* mezery mezi */
+  gap: calc(2 * var(--mezera));
+  padding: 0;
+}
+
+/* odsazeni clanku kvuli fixni navigaci */
+.article-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  gap: 20px;
+  gap: calc(2 * var(--mezera));
+}
+
+/* leva varianta contentu */
+.article-content--left {
+  grid-column: 1;
+}
+
+/* prava varianta contentu */
+.article-content--right {
+  grid-column: 2;
+  /* padding-left: 10px; */
+}
+
+/* styly pro velky fixni obrazek v leve nebo prave casti obrazovky */
+.image-wrapper {
+  bottom: 0;
+  position: absolute;
+  /* width: calc(50vw - 20px); */
+  width: 50vw;
+  height: 100vh;
+  height: 100dvh;
+
+  /* umožníme scrollovat dále */
+  pointer-events: none;
+}
+
+/* leva variace obrazku */
+.image-wrapper--left {
+  left: 0;
+  /* right: calc(-1 * var(--mezera)); */
+}
+
+/* prava variace obrazku */
+.image-wrapper--right {
+  right: 0;
+  right: calc(-2 * var(--mezera));
+}
+
+.image-wrapper__inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-wrapper > .image-wrapper__inner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.image-wrapper__inner::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 70px;
+  background-image: url("img/scroll-animation.gif");
+  background-size: contain;
+
+  z-index: 2;
+}
+
+/* styly pro clanek samotny */
+
+.article-title {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 64px;
+  color: #27611a;
+  line-height: 115%;
+  margin: 0px;
+
+  /* zmenšit line height u nadpisu, u horní malá úpa už je to náročné ke čtení */
+  line-height: 1.1;
+}
+
+/* pokud za ním následuje datum */
+.article-title:has(+ .date-published) {
+  margin-bottom: calc(-1.5 * var(--mezera));
+}
+
+.date-published {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  color: #96bb1e;
+  line-height: 100%;
+  margin: 0px;
+}
+
+.perex {
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0px;
+}
+
+.article-main-image {
+  width: 100%;
+  height: auto;
+}
+
+.article-main-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.article-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* gap: 20px; */
+  gap: calc(1.5 * var(--mezera));
+}
+
+.article-columns > div {
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+  gap: calc(1.5 * var(--mezera));
+}
+
+.article-columns p {
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0px;
+}
+
+.article-columns img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.article-footer {
+  margin: 20px 0px;
+  padding: 20px 20px;
+  background-color: #fff9e5;
+  /* border-top: 1px solid black;
+  border-bottom: 1px solid black; */
+
+  /* padding a bordery */
+  border-radius: 10px;
+  padding: calc(2 * var(--mezera));
+  margin-bottom: calc(2 * var(--mezera));
+}
+
+.article-footer > h3 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  color: #27611a;
+  line-height: 100%;
+  margin: 0px 0px 10px 0px;
+  margin-bottom: var(--mezera);
+}
+
+.article-footer > ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.article-footer > ul > li {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+  padding-left: 40px;
+  font-size: 20px;
+  /* line-height: 35px; */
+  line-height: 1.3;
+  margin-bottom: calc(0.5 * var(--mezera));
+}
+
+/* jedna z metod, jak nahradit klasicky list-style napr. vlastnim obrazkem */
+.article-footer > ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  width: 29px;
+  height: 29px;
+  background: url("./img/ikona.svg") no-repeat center;
+  background-size: contain;
+
+  filter: opacity(0.3);
+}
+
+.article-footer > ul > li > span {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* naučíme návštěvníka aby scrolloval */
+.hero-scroll-info {
+  display: grid;
+  place-items: center;
+  margin-top: calc(3 * var(--mezera));
+  margin-bottom: calc(3 * var(--mezera));
+
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  text-align: center;
+  line-height: 22px;
+}
+
+.hero-scroll-info-img {
+  filter: invert(24%) sepia(14%) saturate(553%) hue-rotate(75deg)
+    brightness(99%) contrast(80%);
+  position: relative;
+}
+
+.last-article {
+  background-color: #27611a;
+  min-height: 10vh;
+  padding-top: calc(2 * var(--mezera));
+  padding-bottom: calc(2 * var(--mezera));
+}
+
+.last-info {
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0px;
+  color: #fff;
+}
+
+.last-info a {
+  color: #96bb1e;
+}
+
+.last-info a:hover {
+  color: #fff;
+}
